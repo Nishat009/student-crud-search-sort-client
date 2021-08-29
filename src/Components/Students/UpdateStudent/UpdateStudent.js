@@ -111,6 +111,8 @@ const UpdateStudent = () => {
             <input
               type="number"
               name="reg"
+              pattern="^[0-9a-zA-Z]*$"
+              min={0}
               onBlur={handleReg}
               defaultValue={student.reg}
               class="form-control"
@@ -122,6 +124,7 @@ const UpdateStudent = () => {
             <input
               type="number"
               name="sId"
+              min={0}
               onBlur={handleId}
               defaultValue={student.sId}
               class="form-control"

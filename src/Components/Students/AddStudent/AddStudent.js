@@ -82,9 +82,10 @@ const AddStudent = () => {
             <label class="form-label fw-bolder text-white">Reg</label>
             <input
               type="number"
+              required
               name="reg"
-              pattern="[0-9]*"
-              inputMode="numeric"
+              pattern="^[0-9a-zA-Z]*$"
+              min={0}
               onBlur={handleBlur}
               class="form-control"
               placeholder="Enter Student reg"
@@ -93,10 +94,11 @@ const AddStudent = () => {
           <div className="col-md-6">
             <label class="form-label fw-bolder text-white">Id</label>
             <input
+              required
               type="number"
               name="sId"
               pattern="[0-9]*"
-              inputMode="numeric"
+              min={0}
               onBlur={handleBlur}
               class="form-control"
               placeholder="Enter Student Id"
