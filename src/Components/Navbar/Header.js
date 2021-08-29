@@ -14,17 +14,7 @@ const Header = () => {
                 <Link  className="text-light nav-link" to="/manageStudent">Manage Student</Link>
                
             </Navbar.Collapse>
-            <Form className="d-flex">
-      <FormControl
-        type="search"
-        placeholder="Search"
-        className="mr-2"
-        aria-label="Search"
-      
-      />
-        
-      <Button variant="outline-success">Search</Button>
-    </Form>
+            
             </Navbar>
         </div>
     );
