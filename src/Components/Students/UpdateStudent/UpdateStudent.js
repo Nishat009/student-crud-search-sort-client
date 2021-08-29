@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import Header from "../../Navbar/Header";
 import "./UpdateStudent.css";
 const UpdateStudent = () => {
@@ -14,7 +14,7 @@ const UpdateStudent = () => {
   const [sId, setSId] = useState("");
   const [student, setStudent] = useState([]);
   const [image, setImage] = useState("");
-
+  const history = useHistory();
   const { id } = useParams();
   useEffect(() => {
     fetch(`http://localhost:5000/updateS/${id}`)
@@ -58,6 +58,7 @@ const UpdateStudent = () => {
         if (data) {
           setDbStatus(data);
           alert("Student information Updated");
+          history.push("/manageStudent");
         }
       });
   };

@@ -13,7 +13,7 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import "./ManageStudent.css";
 import Header from "../../Navbar/Header";
 import { useHistory } from "react-router-dom";
-import { Button, Form, FormControl } from "react-bootstrap";
+import {  Form, FormControl } from "react-bootstrap";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
