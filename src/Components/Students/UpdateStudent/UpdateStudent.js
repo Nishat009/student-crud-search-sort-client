@@ -14,7 +14,7 @@ const UpdateStudent = () => {
   const [sId, setSId] = useState("");
   const [student, setStudent] = useState([]);
   const [image, setImage] = useState("");
-  const history = useHistory();
+   const history = useHistory();
   const { id } = useParams();
   useEffect(() => {
     fetch(`https://still-fjord-46602.herokuapp.com/updateS/${id}`)
