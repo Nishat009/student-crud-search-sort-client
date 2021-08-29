@@ -59,6 +59,22 @@ export default function ManageStudent() {
       setOrder("ASC");
     }
   };
+  const [idRegSort, setIdRegSort] = useState("ASC");
+    const sorted = (property) => {
+        if (idRegSort === "ASC") {
+            const sort = [...student].sort((a, b) =>
+                (a == b ? 0 : a < b ? -1 : 1) * (a > b ? 1 : -1));
+                setStudent(sort);
+                setIdRegSort("DSC");
+        }
+        if (idRegSort === "DSC") {
+            const sort = [...student].sort((a, b) =>
+                (a == b ? 0 : a > b ? -1 : 1) * (a < b ? 1 : -1));
+                setStudent(sort);
+                setIdRegSort("ASC");
+        }
+    };
+
   useEffect(() => {
     fetch("https://still-fjord-46602.herokuapp.com/students")
       .then((res) => res.json())
@@ -110,15 +126,15 @@ export default function ManageStudent() {
             <Table className={classes.table} aria-label="customized table">
               <TableHead style={{ backgroundColor: "#0B4C61" }}>
                 <TableRow>
-                  <StyledTableCell onClick={() => sorting("sId")} align="left">
-                    Id <ArrowDropDownIcon className="text-white" />
-                  </StyledTableCell>
                   <StyledTableCell onClick={() => sorting("name")} align="left">
                     Name <ArrowDropDownIcon className="text-white" />
                   </StyledTableCell>
                   <StyledTableCell align="left">Picture</StyledTableCell>
+                  <StyledTableCell onClick={() => sorted("sId")} align="left">
+                    Id <ArrowDropDownIcon className="text-white" />
+                  </StyledTableCell>
 
-                  <StyledTableCell onClick={() => sorting("reg")} align="left">
+                  <StyledTableCell onClick={() => sorted("reg")} align="left">
                     Registration <ArrowDropDownIcon className="text-white" />
                   </StyledTableCell>
 
@@ -144,8 +160,7 @@ export default function ManageStudent() {
                   })
                   .map((s) => (
                     <StyledTableRow key={s.name}>
-                      <StyledTableCell align="left">{s.sId}</StyledTableCell>
-                      <StyledTableCell align="left">{s.name}</StyledTableCell>
+                      <StyledTableCell align="left">{s.name}</StyledTableCell>{" "}
                       <StyledTableCell component="th" scope="row">
                         <img
                           style={{ width: "8rem", height: "8rem" }}
@@ -153,9 +168,8 @@ export default function ManageStudent() {
                           alt=""
                         />
                       </StyledTableCell>
-
+                      <StyledTableCell align="left">{s.sId}</StyledTableCell>
                       <StyledTableCell align="left">{s.reg}</StyledTableCell>
-
                       <div class="dropdown table-row">
                         <button
                           class="btn btn-sm btn-light dropdown-toggle"
