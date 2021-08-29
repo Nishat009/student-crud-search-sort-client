@@ -17,7 +17,7 @@ const UpdateStudent = () => {
   const history = useHistory();
   const { id } = useParams();
   useEffect(() => {
-    fetch(`http://localhost:5000/updateS/${id}`)
+    fetch(`https://still-fjord-46602.herokuapp.com/updateS/${id}`)
       .then((res) => res.json())
       .then((data) => setStudent(data));
   }, [id]);
@@ -45,7 +45,7 @@ const UpdateStudent = () => {
     };
     console.log(updatedStudent);
 
-    const url = `http://localhost:5000/updateStudent/${id}`;
+    const url = `https://still-fjord-46602.herokuapp.com/updateStudent/${id}`;
     fetch(url, {
       method: "PATCH",
       headers: {
@@ -114,7 +114,7 @@ const UpdateStudent = () => {
               onBlur={handleReg}
               defaultValue={student.reg}
               class="form-control"
-              placeholder="Enter Id"
+              placeholder="Enter Student Reg"
             />
           </div>
           <div className="col-md-6">
@@ -125,7 +125,7 @@ const UpdateStudent = () => {
               onBlur={handleId}
               defaultValue={student.sId}
               class="form-control"
-              placeholder="Enter Id"
+              placeholder="Enter Student Id"
             />
           </div>
 

@@ -43,7 +43,7 @@ const AddStudent = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/addStudent",
+        "https://still-fjord-46602.herokuapp.com/addStudent",
         studentData
       );
       if (res) {
@@ -59,74 +59,72 @@ const AddStudent = () => {
 
   return (
     <div>
-    <Header></Header>
-    <div className="col-md-10 container py-3  product mt-2   rounded">
-      <h1 className="text-center text-warning border-bottom">Add Student</h1>
-      <form
-        class="row   product-two mx-auto p-5 rounded container"
-        onSubmit={handleSubmit}
-      >
-        <div className="col-md-6">
-          <label class="form-label fw-bolder text-white"> Student Name</label>
-          <input
-            type="text"
-            name="name"
-            pattern="^[a-zA-Z ]*$"
-            required
-            onBlur={handleBlur}
-            class="form-control"
-            placeholder="Enter Student Name"
-          />
-        </div>
-        <div className="col-md-6">
-          <label class="form-label fw-bolder text-white">Reg</label>
-          <input
-            type="number"
-            name="reg"
-            pattern="[0-9]*"
-            inputMode="numeric"
-            onBlur={handleBlur}
-            class="form-control"
-            placeholder="Enter Student reg"
-          />
-        </div>
-        <div className="col-md-6">
-          <label class="form-label fw-bolder text-white">Id</label>
-          <input
-            type="number"
-            name="sId"
-            pattern="[0-9]*"
-            inputMode="numeric"
-            onBlur={handleBlur}
-            class="form-control"
-            placeholder="Enter Student Id"
-          />
-        </div>
-        <div className="col-md-6">
-          <label class="form-label fw-bolder text-white">Image</label>
-          <input
-            class="form-control"
-            onChange={handleImageUpload}
-            type="file"
-          />
-          {
-            <p style={{ color: "red" }}>
-              {" "}
-              {imageURLStatus
-                ? "Image uploaded successfully, Click Submit to send your data to Database."
-                : "After choosing a file, Wait until image get uploaded."}
-            </p>
-            
-          }
-           
-        </div>
+      <Header></Header>
+      <div className="col-md-10 container py-3  product mt-2   rounded">
+        <h1 className="text-center text-warning border-bottom">Add Student</h1>
+        <form
+          class="row   product-two mx-auto p-5 rounded container"
+          onSubmit={handleSubmit}
+        >
+          <div className="col-md-6">
+            <label class="form-label fw-bolder text-white"> Student Name</label>
+            <input
+              type="text"
+              name="name"
+              pattern="^[a-zA-Z ]*$"
+              required
+              onBlur={handleBlur}
+              class="form-control"
+              placeholder="Enter Student Name"
+            />
+          </div>
+          <div className="col-md-6">
+            <label class="form-label fw-bolder text-white">Reg</label>
+            <input
+              type="number"
+              name="reg"
+              pattern="[0-9]*"
+              inputMode="numeric"
+              onBlur={handleBlur}
+              class="form-control"
+              placeholder="Enter Student reg"
+            />
+          </div>
+          <div className="col-md-6">
+            <label class="form-label fw-bolder text-white">Id</label>
+            <input
+              type="number"
+              name="sId"
+              pattern="[0-9]*"
+              inputMode="numeric"
+              onBlur={handleBlur}
+              class="form-control"
+              placeholder="Enter Student Id"
+            />
+          </div>
+          <div className="col-md-6">
+            <label class="form-label fw-bolder text-white">Image</label>
+            <input
+              class="form-control"
+              onChange={handleImageUpload}
+              type="file"
+            />
+            {
+              <p style={{ color: "red" }}>
+                {" "}
+                {imageURLStatus
+                  ? "Image uploaded successfully, Click Submit to send your data to Database."
+                  : "After choosing a file, Wait until image get uploaded."}
+              </p>
+            }
+          </div>
 
-        <div className="col-md-12 d-flex align-items-center">
-          <input type="submit" className="mt-3 submit-button" />
-        </div>
-      </form>
+          <div className="col-md-12 d-flex align-items-center">
+            <input type="submit" className="mt-3 submit-button" />
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
   );
 };
 

@@ -9,11 +9,11 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { useEffect } from "react";
 import { useState } from "react";
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import "./ManageStudent.css";
 import Header from "../../Navbar/Header";
 import { useHistory } from "react-router-dom";
-import {  Form, FormControl } from "react-bootstrap";
+import { Form, FormControl } from "react-bootstrap";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -60,13 +60,13 @@ export default function ManageStudent() {
     }
   };
   useEffect(() => {
-    fetch("http://localhost:5000/students")
+    fetch("https://still-fjord-46602.herokuapp.com/students")
       .then((res) => res.json())
       .then((data) => setStudent(data));
   }, []);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/deleteStudents/${id}`, {
+    fetch(`https://still-fjord-46602.herokuapp.com/deleteStudents/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -78,7 +78,7 @@ export default function ManageStudent() {
       });
   };
   const deleteStudents = () => {
-    fetch(`http://localhost:5000/students`)
+    fetch(`https://still-fjord-46602.herokuapp.com/students`)
       .then((res) => res.json())
       .then((data) => setStudent(data));
   };
@@ -110,14 +110,17 @@ export default function ManageStudent() {
           <Table className={classes.table} aria-label="customized table">
             <TableHead style={{ backgroundColor: "#0B4C61" }}>
               <TableRow>
-            
-                <StyledTableCell onClick={() => sorting("name")} align="left"> 
+                <StyledTableCell onClick={() => sorting("sId")} align="left">
+                  Id <ArrowDropDownIcon className="text-white" />
+                </StyledTableCell>
+                <StyledTableCell onClick={() => sorting("name")} align="left">
                   Name <ArrowDropDownIcon className="text-white" />
                 </StyledTableCell>
                 <StyledTableCell align="left">Picture</StyledTableCell>
 
-                <StyledTableCell  onClick={() => sorting("reg")} align="left">Registration  <ArrowDropDownIcon className="text-white" /></StyledTableCell>
-                <StyledTableCell  onClick={() => sorting("sId")} align="left">Id  <ArrowDropDownIcon className="text-white" /></StyledTableCell>
+                <StyledTableCell onClick={() => sorting("reg")} align="left">
+                  Registration <ArrowDropDownIcon className="text-white" />
+                </StyledTableCell>
 
                 <StyledTableCell align="left">Action</StyledTableCell>
               </TableRow>
@@ -137,6 +140,7 @@ export default function ManageStudent() {
                 })
                 .map((s) => (
                   <StyledTableRow key={s.name}>
+                    <StyledTableCell align="left">{s.sId}</StyledTableCell>
                     <StyledTableCell align="left">{s.name}</StyledTableCell>
                     <StyledTableCell component="th" scope="row">
                       <img
@@ -146,8 +150,8 @@ export default function ManageStudent() {
                       />
                     </StyledTableCell>
 
-                     <StyledTableCell   align="left">{s.reg}</StyledTableCell>
-                    <StyledTableCell align="left">{s.sId}</StyledTableCell>
+                    <StyledTableCell align="left">{s.reg}</StyledTableCell>
+
                     <div class="dropdown table-row">
                       <button
                         class="btn btn-sm btn-light dropdown-toggle"
