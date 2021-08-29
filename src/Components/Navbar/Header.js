@@ -7,7 +7,7 @@ const Header = () => {
       <Navbar bg="success" expand="lg">
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-        <Navbar.Collapse className=" justify-content-end">
+        <Navbar.Collapse className="">
           <Link className="text-light nav-link" to="/addStudent">
             Add Student
           </Link>
